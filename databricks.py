@@ -7,6 +7,7 @@ import json
 #import time as time_sleep
 import tweepy
 import time
+import os
 
 # --- Azure Cosmos DB Config ---
 # The default value "..." is used if the variable isn't found
