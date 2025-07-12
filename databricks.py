@@ -7,15 +7,19 @@ import json
 #import time as time_sleep
 import tweepy
 import time
-DB_NAME = "testingcosmos"
-COLLECTION_NAME = 'testingdatabrickscosmos'
-CONNECTION = "mongodb://testingcosmosdatabricks:qr6dgMN9tXaardkFxMB2IeQSqZuDwdS3jmcimjrS0vC7EnU4jxdJ7ERnFPOikt4PjLU7bQqsv6CGACDbIBD3og==@testingcosmosdatabricks.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@testingcosmosdatabricks@"
 
-api_key = "Qh5Rlstp7jpND3znRWUQ91oSB"
-api_secret = "MjOBnsr5Gn30nHnBnEaDH0yxLuEQGPofFhRINtYDMmJ5nTtUTP"
-bearer_token = "AAAAAAAAAAAAAAAAAAAAABp1mAEAAAAAy3jWsLhRHvfcTq2xro0S3DlvpyM%3DxsieY8WfieMrJ3pRhQufPjyqDaw5sLbq96JbijgbABcgHgIBH9"
-access_token = "1548626209491374080-rOds6Zz1LVrZGrxwa6sor4xHAiaTOi"
-access_token_secret = "wO5YuECdwsx2ZYcpgyi8lImMqWNpQJe3ujCqJO3q3fZmq"
+# --- Azure Cosmos DB Config ---
+# The default value "..." is used if the variable isn't found
+CONNECTION = os.getenv("DB_CONNECTION_STRING", "...") 
+DB_NAME = os.getenv("DB_NAME", "testingcosmos")
+COLLECTION_NAME = os.getenv("COLLECTION_NAME", "testingdatabrickscosmos")
+
+# --- Twitter API Config ---
+api_key = os.getenv("TWITTER_API_KEY", "...")
+api_secret = os.getenv("TWITTER_API_SECRET", "...")
+bearer_token = os.getenv("TWITTER_BEARER_TOKEN", "...")
+access_token = os.getenv("TWITTER_ACCESS_TOKEN", "...")
+access_token_secret = os.getenv("TWITTER_ACCESS_TOKEN_SECRET", "...")
 
 auth = tweepy.OAuth1UserHandler(api_key, api_secret, access_token, access_token_secret)
 api = tweepy.API(auth)
